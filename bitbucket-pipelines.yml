@@ -1,0 +1,12 @@
+image: node:6.9.4
+pipelines:
+  branches:
+    master:
+     - step:
+        script:
+        - npm install -g @angular/cli
+        - npm install -g now
+        - npm install
+        - ng test --single-run
+        - ng build --target-production --base-href /
+        - now dist --public -t=$NOW_TOKEN  
